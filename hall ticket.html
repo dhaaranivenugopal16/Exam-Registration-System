@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Hall Ticket</h2>
+<p>Name: <span id="n"></span></p>
+<p>Exam: <span id="ex"></span></p>
+<p>Reg ID: <span id="r"></span></p>
+<p>City: <span id="c"></span></p>
+<img id="ph" width="100"><br><br>
+<img id="sg" width="100"><br><br>
+<button onclick="print()">Print</button>
+<script> let u = Auth.getCurrentUser(); if(!u) location="login.html"; let type = new URLSearchParams(location.search).get('type') ||
+"aptitude"; (async ()=>{ let p = await Payment.isPaid(u.email,type); if(!p.paid){ alert("Pay first"); location="payment.html?type="+type; return;
+}
+n.innerText = u.name; ex.innerText = type;
+r.innerText = p.regId;
+c.innerText = u.city || "Chennai"; if(u.photo) ph.src =
+u.photo; if(u.sign) sg.src = u.sign; })();
+</script>
+</body>
+</html>s
