@@ -1,0 +1,21 @@
+:root{
+--bg:#120821;
+--gold:#D4AF37;
+--white:#fff;
+}
+*{ margin:0; padding:0; 
+  box-sizing:border-box;
+} body{
+background:var(--bg); color:var(--white); 
+  font-family:sans-serif;
+}
+.card{ padding:20px; border:1px solid var(--gold); 
+      border-radius:10px;
+}
+.btn{ padding:10px; background:var(--gold); border:none; 
+     cursor:pointer;
+} input,select{ 
+  width:100%; 
+  padding:10px; 
+  margin:10px 0;
+}
