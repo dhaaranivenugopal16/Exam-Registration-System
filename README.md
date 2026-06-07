@@ -1,1 +1,1 @@
-# Exam-Registration-System
+A full-stack web application for managing and conducting placement mock tests for students — featuring registration, authentication, enrollment, exam scheduling, hall ticket generation, and payment processing.
