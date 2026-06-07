@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Student Enrollment</h2>
+<form id="f">
+<input id="n" placeholder="Name" required><br><br> <input id="e" placeholder="Email" required><br><br> <input id="p" placeholder="Phone" required><br><br> <input id="a" type="number" placeholder="Age" required><br><br>
+<select id="m" required>
+<option value="">Select Exam</option>
+<option value="aptitude">Aptitude</option>
+<option value="reasoning">Reasoning</option>
+<option value="coding">Coding</option>
+</select><br><br>
+<input id="ph" type="file" required><br><br>
+<input id="sg" type="file" required><br><br>
+<input id="c" placeholder="College" required><br><br> <input id="cg" placeholder="CGPA" required><br><br>
+<button>Submit</button>
+</form> <script>
+f.onsubmit = async(x)=>{
+x.preventDefault(); let data = {
+name:n.value, email:e.value, phone:p.value, age:a.value, module:m.value, college:c.value, cgpa:cg.value
+}; let res = await Auth.enroll(data);
+alert(res.success ? "Done" : "Error");
+if(res.success) location="payment.html";
+}
+</script>
+</body> </html> 
