@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Register</h2>
+<form id="f">
+<input id="n" placeholder="Name" required><br><br>
+<input id="e" type="email" placeholder="Email" required><br><br> <input id="p" type="password" placeholder="Password" required><br><br> <button>Sign Up</button>
+</form>
+<p>Already user? <a href="login.html">Login</a></p>
+<script>
+f.onsubmit = async (x)=>{
+x.preventDefault(); let res = await Auth.register({ name:n.value, email:e.value, password:p.value
+});
+alert(res.success ? "Account Created" : "Error"); if(res.success) location="login.html";}
+</script>
+</body> </html> 
