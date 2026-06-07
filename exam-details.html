@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+<a href="dashboard.html">← Back</a>
+<h2 id="t">Exam</h2>
+<p id="d"></p>
+<h3>Topics</h3>
+<ul id="list"></ul>
+<p>Difficulty: <span id="diff"></span></p>
+<p>Duration: <span id="dur"></span></p>
+<div id="action"></div>
+<br>
+<button onclick="sample()">Free Sample Test</button>
+<script> let type = new URLSearchParams(location.search).get("type") ||
+"aptitude"; let data = ExamDetails[type]; let user = Auth.getCurrentUser(); if(data){
+t.innerText = data.title;
+d.innerText = data.desc; diff.innerText = data.difficulty; dur.innerText = data.duration;
+data.topics.forEach(x=>{
+list.innerHTML += "<li>"+x+"</li>";
+}); if(!user){ action.innerHTML = '<a
+href="register.html">Register</a>';}	else if(Payment.isPaid(user.email,type)){ action.innerHTML = `<a href="exam.html?type=${type}">Start
+Exam</a>`;}	else if(user.enrolled){ action.innerHTML = `<a href="payment.html?type=${type}">Pay Now</a>`; } else{ action.innerHTML = `<a href="enrollment.html">Enroll</a>`; }}
+function sample(){
+location = "exam.html?type="+type+"&free=1";}
+</script>
+</body> </html> 
