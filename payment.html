@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2 id="t">Payment</h2>
+<img src="https://api.qrserver.com/v1/create-qrcode/?size=200x200&data=PAY" width="200"><br><br>
+<p>Fee: ₹299</p>
+<button id="b">Confirm Payment</button>
+<script> let u = Auth.getCurrentUser(); if(!u) location="login.html"; let type = new URLSearchParams(location.search).get('type') || "aptitude"; t.innerText = "Payment for " + type; b.onclick = async ()=>{
+b.innerText="Checking..."; let r = await Payment.confirmPayment(u.email, type);
+if(r.success){
+alert("Payment Success"); location="hallticket.html?type="+type;
+} else {
+alert("Failed");
+b.innerText="Confirm Payment";
+}}
+</script>
+</body> </html> 
