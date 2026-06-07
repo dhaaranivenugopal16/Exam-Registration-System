@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Admin Login</h2>
+<form id="f">
+<input id="u" placeholder="Username"><br><br> <input id="p" type="password" placeholder="Password"><br><br> <button>Login</button>
+</form>
+<div id="panel" style="display:none">
+<h3>Admin Panel</h3>
+<p>Total Students: <span id="s">0</span></p>
+<p>Revenue: ₹<span id="r">0</span></p>
+<h4>Add Question</h4>
+<input id="q" placeholder="Question"><br><br>
+<input id="o1" placeholder="Option1"><br>
+<input id="o2" placeholder="Option2"><br>
+<input id="o3" placeholder="Option3"><br>
+<input id="o4" placeholder="Option4"><br><br>
+<input id="a" placeholder="Answer index"><br><br> <button onclick="addQ()">Add</button>
+<h4>Users</h4>
+<div id="users"></div>
+<h4>Payments</h4>
+<div id="pay"></div>
+</div>
+<script>
+f.onsubmit = e=>{
+e.preventDefault(); if(u.value=="admin" && p.value=="admin123"){ panel.style.display="block"; f.style.display="none"; load();
+} else alert("Wrong");}; async function load(){
+let users = await
+fetch("/api/admin/users").then(r=>r.json()); let pay = await fetch("/api/admin/payments").then(r=>r.json()); s.innerText = users.length;
+r.innerText = pay.length * 299;
+document.getElementById("users").innerHTML = users.map(x=>x.name+" - "+x.email).join("<br>");
+document.getElementById("pay").innerHTML = pay.map(x=>x.email+"
+- "+x.reg_id).join("<br>"); } async function addQ(){
+let data = {
+type:"aptitude", question:q.value, options:[o1.value,o2.value,o3.value,o4.value], answer:parseInt( a.value)
+}; await fetch("/api/questions",{
+method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data)
+}); alert("Added");}
+</script>
+</body> </html> 
