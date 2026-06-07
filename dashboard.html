@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2 id="w">Welcome</h2>
+<h3>Aptitude</h3>
+<button onclick="go('aptitude')">Start</button>
+<h3>Reasoning</h3>
+<button onclick="go('reasoning')">Start</button> <h3>Coding</h3>
+<button onclick="go('coding')">Start</button>
+<br><br>
+<a href="previous-questions.html">Previous Questions</a><br> <a href="hallticket.html">Hall Ticket</a>
+<script> let user = Auth.getCurrentUser(); if(user) w.innerText = "Welcome " + user.name; function go(type){ if(!Payment.isPaid(user.email, type)){ alert("Pay first"); location = "payment.html?type=" + type;
+} else {
+location = "exam.html?type=" + type;
+}
+}
+</script>
+</body> </html> 
